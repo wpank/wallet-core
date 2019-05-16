@@ -124,6 +124,9 @@ TEST(TWCoinTypeConfiguration, TWCoinTypeConfigurationGetSymbol) {
 
     auto dexon = WRAPS(TWCoinTypeConfigurationGetSymbol(TWCoinTypeDEXON));
     assertStringsEqual(dexon, "DXN");
+
+    auto monero = WRAPS(TWCoinTypeConfigurationGetSymbol(TWCoinTypeMonero));
+    assertStringsEqual(monero, "XMR");
 }
 
 TEST(TWCoinTypeConfiguration, TWCoinTypeConfigurationGetDecimals) {
@@ -167,6 +170,7 @@ TEST(TWCoinTypeConfiguration, TWCoinTypeConfigurationGetDecimals) {
     ASSERT_EQ(TWCoinTypeConfigurationGetDecimals(TWCoinTypeZilliqa), 12);
     ASSERT_EQ(TWCoinTypeConfigurationGetDecimals(TWCoinTypeSemux), 9);
     ASSERT_EQ(TWCoinTypeConfigurationGetDecimals(TWCoinTypeDEXON), 18);
+    ASSERT_EQ(TWCoinTypeConfigurationGetDecimals(TWCoinTypeMonero), 12);
 }
 
 TEST(TWCoinTypeConfiguration, TWCoinTypeConfigurationGetTransactionURL) {
@@ -294,6 +298,9 @@ TEST(TWCoinTypeConfiguration, TWCoinTypeConfigurationGetTransactionURL) {
 
     auto zel = WRAPS(TWCoinTypeConfigurationGetTransactionURL(TWCoinTypeZelcash, txId));
     assertStringsEqual(zel, "https://explorer.zel.cash/tx/123");
+
+    auto monero = WRAPS(TWCoinTypeConfigurationGetTransactionURL(TWCoinTypeMonero, txId));
+    assertStringsEqual(monero, "https://moneroblocks.info/block/123");
 }
 
 TEST(TWCoinTypeConfiguration, TWCoinTypeConfigurationGetID) {
@@ -413,6 +420,9 @@ TEST(TWCoinTypeConfiguration, TWCoinTypeConfigurationGetID) {
 
     auto zel = WRAPS(TWCoinTypeConfigurationGetID(TWCoinTypeZelcash));
     assertStringsEqual(zel, "zelcash");
+
+    auto monero = WRAPS(TWCoinTypeConfigurationGetID(TWCoinTypeMonero));
+    assertStringsEqual(monero, "monero");
 }
 
 TEST(TWCoinTypeConfiguration, TWCoinTypeConfigurationGetName) {
@@ -535,4 +545,7 @@ TEST(TWCoinTypeConfiguration, TWCoinTypeConfigurationGetName) {
 
     auto zel = WRAPS(TWCoinTypeConfigurationGetName(TWCoinTypeZelcash));
     assertStringsEqual(zel, "Zelcash");
+
+    auto monero = WRAPS(TWCoinTypeConfigurationGetName(TWCoinTypeMonero));
+    assertStringsEqual(monero, "Monero");
 }
