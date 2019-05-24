@@ -160,6 +160,13 @@ TEST(Coin, ValidateAddressSemux) {
     EXPECT_FALSE(validateAddress(TWCoinTypeSemux, ""));
 }
 
+TEST(Coin, ValidateAddressMonero){
+    EXPECT_TRUE(validateAddress(TWCoinTypeMonero, "0xa91778faa20b127014dbd9561890689ae0a6cb19"));
+        EXPECT_FALSE(validateAddress(TWCoinTypeSemux, "a91778faa20b127014dbd9561890689ae0a6cb19"));
+        EXPECT_FALSE(validateAddress(TWCoinTypeSemux, "0x"));
+        EXPECT_FALSE(validateAddress(TWCoinTypeSemux, ""));
+}
+
 TEST(Coin, DeriveAddress) {
     const auto privateKey = PrivateKey(parse_hex("0x4646464646464646464646464646464646464646464646464646464646464646"));
     EXPECT_EQ(TW::deriveAddress(TWCoinTypeAion, privateKey), "0xa0010b0ea04ba4d76ca6e5e9900bacf19bc4402eaec7e36ea7ddd8eed48f60f3");

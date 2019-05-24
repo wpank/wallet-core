@@ -30,8 +30,12 @@ TEST(MoneroAddress, FromBadString){
 
 }
 
-TEST(MoneroAddress, IsValid){
+TEST(MoneroAddress, StealthAddressIsValid){
+    ASSERT_TRUE(Address::isValid("439EMUy9kEZF2iBC85AvVGWoqbzf6A6cHHmiXME7KFYzZmJvxnqoqJgGSv5NFUgGFnMVKjXReSDGZZB3XA1jQj2wEhjc8eG"));
+}
 
+TEST(MoneroAddress, IntegratedAddressIsValid){
+    ASSERT_TRUE(Address::isValid("4CquNHneMW5F2iBC85AvVGWoqbzf6A6cHHmiXME7KFYzZmJvxnqoqJgGSv5NFUgGFnMVKjXReSDGZZB3XA1jQj2wMLEoAsMWnGpMN6RfDF"));
 }
 
 TEST(MoneroAddress, FromPrivateKey){

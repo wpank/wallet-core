@@ -34,6 +34,7 @@
 #include "IoTeX/Address.h"
 #include "Zilliqa/Address.h"
 #include "Semux/Address.h"
+#include "Monero/Address.h"
 
 #include <TrustWalletCore/TWHRP.h>
 #include <TrustWalletCore/TWP2PKHPrefix.h>
@@ -166,7 +167,12 @@ bool TW::validateAddress(TWCoinType coin, const std::string& string) {
 
     case TWCoinTypeSemux:
         return Semux::Address::isValid(string);
+
+    case TWCoinTypeMonero:
+        return Monero::Address::isValid(string);
     }
+
+
 }
 
 std::string TW::deriveAddress(TWCoinType coin, const PrivateKey& privateKey) {
@@ -286,6 +292,9 @@ std::string TW::deriveAddress(TWCoinType coin, const PublicKey& publicKey) {
 
     case TWCoinTypeSemux:
         return Semux::Address(publicKey).string();
+
+    case TWCoinTypeMonero:
+        return Monero::Address(publicKey).string();
     }
 }
 

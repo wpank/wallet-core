@@ -4,19 +4,24 @@
 // terms governing use, modification, and redistribution, is contained in the
 // file LICENSE at the root of the source code distribution tree.
 
+#include <iostream>
 #include "Address.h"
 #include "stdint.h"
 #include "../Hash.h"
 #include "../HexCoding.h"
+#include "base58.h"
 
 using namespace TW::Monero;
 
 bool Address::isValid(const std::string &string){
-    if (string.size() !=42 || string[0] != '0' || string[1] != 'x'){
+    if (string.size() != 95 && string.size() != 106){
+        std::cout<<"String size: "<<(string.size() == 106)<<std::endl;
         return false;
     }
-    const auto data = parse_hex(string);
-    return Address::isValid(data);
+    std::string decodedAddress;
+    tools::base58::decode(string, decodedAddress);
+    std::cout<<"what";
+    return Address::isValid(parse_hex(decodedAddress));
 }
 
 Address::Address(const std::string &string){
@@ -39,5 +44,6 @@ Address::Address(const PublicKey &publicKey){
 }
 
 std::string Address::string() const {
-    return "0x" + hex(bytes);
+    return hex(bytes);
 }
+

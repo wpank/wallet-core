@@ -17,7 +17,7 @@ namespace TW::Monero{
     class Address{
     public:
         /// Number of bytes in an address;
-        static const size_t size = 20;
+        static const size_t size = 69;
 
         /// Address data followed by the public key
         std::array<uint8_t, size> bytes;

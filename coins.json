@@ -642,5 +642,17 @@
         "xprv": "xprv",
         "transactionPath": "/tx/",
         "explorer": "https://explorer.zel.cash"
+    },
+    {
+        "id": "monero",
+        "name": "Monero",
+        "symbol":"XMR",
+        "decimals": 12,
+        "blockchain": "Monero",
+        "derivationPath": "m/44'/128'/0'/0/0",
+        "curve": "ed25519",
+        "publicKeyType": "ed25519",
+        "transactionPath": "/block/",
+        "explorer": "https://moneroblocks.info"
     }
 ]
